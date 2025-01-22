@@ -12,7 +12,7 @@ class _BmiState extends State<Bmi> {
   int _height = 120;
 
   Color _color = const Color.fromARGB(255, 99, 215, 230);
-  String _result = 'Result';
+  String _result = '';
 
   @override
   Widget build(BuildContext context) {
@@ -100,6 +100,20 @@ class _BmiState extends State<Bmi> {
 
   //ส่วนของ function คำนวณ BMI
   calculate() {
-
+    double bmi = _weigth / ((_height / 100) * (_height / 100));
+    if (bmi < 18.5) {
+      _result = "คุณผอมเกินไป";
+      _color = Colors.lightBlue;
+    } else if (bmi < 25) {
+      _result = "ปกติ";
+      _color = Colors.green;
+    }
+     else if (bmi < 30) {
+      _result = "เริ่มอ้วน";
+      _color = Colors.amber;
+    }else {
+      _result = "อยู่ภายในสภาวะอ้วน";
+      _color = Colors.red;
+    }
   }
 }
